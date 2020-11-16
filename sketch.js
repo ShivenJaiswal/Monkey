@@ -8,6 +8,7 @@ var banana ,bananaImage, obstacle, obstacleImage
 var FoodGroup, obstacleGroup
 var Food,Obstacle
 var score
+var gameOver
 
 function preload(){
   
@@ -45,6 +46,9 @@ score = 0;
 function draw()
 {
 background(255);
+  
+ 
+
   
 var survivalTime=0;
 stroke("black");
@@ -84,21 +88,17 @@ if(Food.isTouching(monkey))
 Food.destroyEach();
 score = score+1;
 }
-  
+
 if(Obstacle.isTouching(monkey))
 {
-Obstacle.destroyEach();
-score = score-1;
-}
+
+Obstacle.setVelocityXEach(0);
+Food.setVelocityXEach(0); 
 
 }
+
+}
   
-
-  
-
-
-  
-
 
 FoodGroup();
 obstacleGroup();
@@ -140,6 +140,7 @@ function obstacleGroup() {
     Obstacle.add(obstacle);
     
   }
+
 }
     
 
@@ -156,3 +157,10 @@ function obstacleGroup() {
 
 
 
+  
+  
+  
+  
+  
+  
+  
